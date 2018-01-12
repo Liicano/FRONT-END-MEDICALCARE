@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie ie6 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie ie7 lt-ie9 lt-ie8"        lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie ie8 lt-ie9"               lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="ie ie9"                      lang="en"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-ie">
+<!--<![endif]-->
+
+
+<!-- Mirrored from themicon.co/theme/beadmin/v1.1/template.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Dec 2017 23:41:16 GMT -->
+<head>
+   <!-- Meta-->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+   <meta name="description" content="">
+   <meta name="keywords" content="">
+   <meta name="author" content="">
+   <title>MedicalCare</title>
+   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries-->
+   <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+   <!-- Bootstrap CSS-->
+   <link rel="stylesheet" href="app/css/bootstrap.css">
+   <!-- Vendor CSS-->
+   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" href="vendor/animo.js/animate-animo.css">
+   <link rel="stylesheet" href="vendor/whirl/dist/whirl.css">
+   <!-- START Page Custom CSS-->
+   <!-- END Page Custom CSS-->
+   <!-- App CSS-->
+   <link rel="stylesheet" href="app/css/app.css">
+   <!-- Modernizr JS Script-->
+   <script src="vendor/modernizr/modernizr.custom.js" type="application/javascript"></script>
+   <!-- FastClick for mobiles-->
+   <script src="vendor/fastclick/lib/fastclick.js" type="application/javascript"></script>
+</head>
+
+<body>
+   <!-- START Main wrapper-->
+   <div class="wrapper">
+     <!-- START Top Navbar-->
+      <nav role="navigation" class="navbar navbar-default navbar-top navbar-fixed-top">
+         <!-- START navbar header-->
+        <div class="navbar-header">
+            <a href="dashboard.v1.html" class="navbar-brand">
+               <div class="brand-logo">
+                 <img src="app/img/logo-single.png" alt="App Logo" class="img-responsive"> 
+               </div>
+               <div class="brand-logo-collapsed">
+                  <img src="app/img/logo-single.png" alt="App Logo" class="img-responsive">
+               </div>
+            </a>
+         </div>
+         <!-- END navbar header-->
+         <!-- START Nav wrapper-->
+         <div class="nav-wrapper">
+            <!-- START Left navbar-->
+            <ul class="nav navbar-nav">
+               <li>
+                  <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                  <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs">
+                     <em class="fa fa-navicon"></em>
+                  </a>
+                  <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
+                  <a href="#" data-toggle-state="aside-toggled" class="visible-xs">
+                     <em class="fa fa-navicon"></em>
+                  </a>
+               </li>
+            </ul>
+                  <!-- END Dropdown menu-->
+               </li>
+               <!-- END Messages menu (dropdown-list)-->
+             </ul>
+            <!-- END Left navbar-->
+            
+         </div>
+         <!-- END Nav wrapper-->
+       
+      </nav>
+      <!-- END Top Navbar-->
+      <!-- START aside-->
+      <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <nav class="sidebar">
+            <!-- START user info-->
+            <div class="item user-block" style="display:block;">
+               <!-- User picture-->
+               <div class="user-block-picture">
+                  <div class="user-block-status">
+                     <img src="app/img/user/userLogo.png" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle">
+                     <div class="circle circle-success circle-lg"></div>
+                  </div>
+                  <!-- Status when collapsed-->
+               </div>
+               <!-- Name and Role-->
+               <div class="user-block-info">
+                  <span class="user-block-name item-text">{{usuario.nombre}} {{usuario.apellido}}</span>
+                  <span class="user-block-role">{{usuario.cargo}}</span>
+               </div>
+            </div>
+            <!-- END user info-->
+            <ul class="nav">
+               <!-- START Menu-->
+               <li class="nav-heading">Menu</li>
+               <li>
+                  <a href="#!home" title="Dashboard">
+                     <em class="fa fa-dot-circle-o"></em>
+                     <span class="item-text">Inicio </span>
+                  </a>  
+                
+               </li>
+              
+               <li>
+                  <a href="#!equipos">
+                     <em class="fa fa-dropbox"></em>
+                     <span class="item-text">Equipos</span>
+                  </a>
+                </li>
+               
+               <li class="nav-heading" ng-show="isDirector">Director</li>
+               <li ng-show="isDirector">
+                  <a href="#!home" title="Dashboard">
+                     <em class="fa fa-user"></em>
+                     <span class="item-text">Usuarios</span>
+                  </a>
+               </li>
+
+               <li class="nav-heading">Reportes</li>
+               <li>
+                  <a href="#!home" title="Dashboard">
+                     <em class="fa fa-list-alt"></em>
+                     <span class="item-text">Reportes</span>
+                  </a>
+                
+               </li>
+
+               <li class="nav-heading">Mi usuario</li>
+                <li>
+                  <a href="#!perfil" title="Dashboard">
+                     <em class="fa fa-user"></em>
+                     <span class="item-text">Perfil</span>
+                  </a>
+                   <a href="" title="Dashboard " ng-click="logout()" class="text-danger">
+                     <em class="fa fa-remove"></em>
+                     <span class="item-text text-danger">Cerrar sesion</span>
+                  </a>
+                
+               </li>
+
+            </ul>
+         </nav>
+         <!-- END Sidebar (left)-->
+      </aside>
+   <!-- End aside-->
+ 
+
+
+<section>
+<!-- START Page content-->
+<div class="content-wrapper">
+<div class="row">
+<h4 class="title"><span class="fa fa-list-alt text-info"></span>  Reportes</h4>
+<hr class="divider">
+<div class="col-lg-3"></div>
+<div class="col-lg-6">
+                  <!-- START widget-->
+                  <div class="panel widget" style="margin-top:-8%;">
+                     <div class="half-float">
+                        <img src="app/img/bg3.jpg" alt="" class="img-responsive">
+                        <div class="half-float-bottom">
+                           <img src="app/img/user/09.jpg" alt="Image" class="img-thumbnail img-circle thumb128">
+                        </div>
+                     </div>
+                     <div class="panel-body text-center">
+                        <h3 class="m0">Reportes</h3>
+                        <p class="text-muted">Equipos y Usuarios</p>
+                        <p>Reportes de equipos y usuarios basados en los tres estados que pueden presentar los equipos: <span class="text-success">Disponible</span>, <span class="text-warning">En mantenimiento</span>, <span class="text-danger">Dañado</span></p><br>
+                        <p>Reporte de <strong>USUARIOS</strong> con sus datos completos.</p>
+                     </div>
+                     <div class="panel-body text-center bg-gray-dark">
+                        <div class="row">
+                           <div class="col-xs-4">
+                              <button class="btn btn-success btn-sm" ng-click="openPdf()">Disponibles</button>
+                           </div>
+                           <div class="col-xs-4">
+                              <button class="btn btn-warning btn-sm">Mantenimiento</button>
+                           </div>
+                           <div class="col-xs-4">
+                              <button class="btn btn-danger btn-sm">Dañados</button>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="panel-body text-center bg-gray-dark">
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <button class="btn btn-primary btn-sm">USUARIOS</button>
+                           </div>
+                         
+                        </div>
+                     </div>
+                  </div>
+                  <!-- END widget-->
+               </div>
+<div class="col-lg-3"></div>
+  </div>
+</div>
+
+</section>

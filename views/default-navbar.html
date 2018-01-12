@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie ie6 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie ie7 lt-ie9 lt-ie8"        lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie ie8 lt-ie9"               lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="ie ie9"                      lang="en"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-ie">
+<!--<![endif]-->
+
+
+<!-- Mirrored from themicon.co/theme/beadmin/v1.1/template.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Dec 2017 23:41:16 GMT -->
+<head>
+   <!-- Meta-->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+   <meta name="description" content="">
+   <meta name="keywords" content="">
+   <meta name="author" content="">
+   <title>MedicalCare</title>
+   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries-->
+   <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+   <!-- Bootstrap CSS-->
+   <link rel="stylesheet" href="app/css/bootstrap.css">
+   <!-- Vendor CSS-->
+   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" href="vendor/animo.js/animate-animo.css">
+   <link rel="stylesheet" href="vendor/whirl/dist/whirl.css">
+   <!-- START Page Custom CSS-->
+   <!-- END Page Custom CSS-->
+   <!-- App CSS-->
+   <link rel="stylesheet" href="app/css/app.css">
+   <!-- Modernizr JS Script-->
+   <script src="vendor/modernizr/modernizr.custom.js" type="application/javascript"></script>
+   <!-- FastClick for mobiles-->
+   <script src="vendor/fastclick/lib/fastclick.js" type="application/javascript"></script>
+   
+</head>
+
+<body>
+   <!-- START Main wrapper-->
+   <div class="wrapper">
+     <!-- START Top Navbar-->
+      <nav role="navigation" class="navbar navbar-default navbar-top navbar-fixed-top">
+         <!-- START navbar header-->
+        <div class="navbar-header">
+            <a href="dashboard.v1.html" class="navbar-brand">
+               <div class="brand-logo">
+                 <img src="app/img/logo-single.png" alt="App Logo" class="img-responsive"> 
+               </div>
+               <div class="brand-logo-collapsed">
+                  <img src="app/img/logo-single.png" alt="App Logo" class="img-responsive">
+               </div>
+            </a>
+         </div>
+         <!-- END navbar header-->
+         <!-- START Nav wrapper-->
+         <div class="nav-wrapper">
+            <!-- START Left navbar-->
+            <ul class="nav navbar-nav">
+               <li>
+                  <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                  <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs">
+                     <em class="fa fa-navicon"></em>
+                  </a>
+                  <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
+                  <a href="#" data-toggle-state="aside-toggled" class="visible-xs">
+                     <em class="fa fa-navicon"></em>
+                  </a>
+               </li>
+            </ul>
+                  <!-- END Dropdown menu-->
+               </li>
+               <!-- END Messages menu (dropdown-list)-->
+             </ul>
+            <!-- END Left navbar-->
+            
+         </div>
+         <!-- END Nav wrapper-->
+       
+      </nav>
+      <!-- END Top Navbar-->
+      <!-- START aside-->
+      <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <nav class="sidebar">
+            <!-- START user info-->
+            <div class="item user-block" style="display:block;">
+               <!-- User picture-->
+               <div class="user-block-picture">
+                  <div class="user-block-status">
+                     <img src="app/img/user/userLogo.png" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle">
+                     <div class="circle circle-success circle-lg"></div>
+                  </div>
+                  <!-- Status when collapsed-->
+               </div>
+               <!-- Name and Role-->
+               <div class="user-block-info">
+                  <span class="user-block-name item-text">{{usuario.nombre}} {{usuario.apellido}}</span>
+                  <span class="user-block-role">{{usuario.cargo}}</span>
+               </div>
+            </div>
+            <!-- END user info-->
+            <ul class="nav">
+               <!-- START Menu-->
+               <li class="nav-heading">Menu</li>
+               <li>
+                  <a href="#!home" title="Dashboard">
+                     <em class="fa fa-dot-circle-o"></em>
+                     <span class="item-text">Inicio </span>
+                  </a>  
+                
+               </li>
+              
+               <li>
+                  <a href="#!equipos">
+                     <em class="fa fa-dropbox"></em>
+                     <span class="item-text">Equipos</span>
+                  </a>
+                </li>
+               
+               <li class="nav-heading" ng-show="isDirector">Director</li>
+               <li ng-show="isDirector">
+                  <a href="#!home" title="Dashboard">
+                     <em class="fa fa-user"></em>
+                     <span class="item-text">Usuarios</span>
+                  </a>
+               </li>
+
+               <li class="nav-heading">Reportes</li>
+               <li>
+                  <a href="#!home" title="Dashboard">
+                     <em class="fa fa-list-ul"></em>
+                     <span class="item-text">Equipos</span>
+                  </a>
+                
+               </li>
+
+               <li class="nav-heading">Mi usuario</li>
+                <li>
+                  <a href="#" title="Dashboard">
+                     <em class="fa fa-user"></em>
+                     <span class="item-text">Perfil</span>
+                  </a>
+                   <a href="" title="Dashboard " ng-click="logout()" class="text-danger">
+                     <em class="fa fa-remove"></em>
+                     <span class="item-text text-danger">Cerrar sesion</span>
+                  </a>
+                
+               </li>
+
+            </ul>
+         </nav>
+         <!-- END Sidebar (left)-->
+      </aside>
+   <!-- End aside-->
+ 
+
+
+<section>
+<!-- START Page content-->
+<div class="content-wrapper">
+<div class="row">
+
+
+<div class="col-md-4 offset-2">
+   <div class="panel panel-success">
+                     <div class="panel-heading">
+                        <div class="row">
+                           <div class="col-xs-3">
+                              <em class="fa fa-pencil-square fa-5x"></em>
+                           </div>
+                           <div class="col-xs-9 text-right">
+                              <div class="text-lg"></div>
+                              <p class="m0">Registrar equipo nuevo</p>
+                           </div>
+                        </div>
+                     </div>
+                     <a href="" class="panel-footer bg-dark bt0 clearfix btn-block" data-toggle="modal" data-target="#exampleModalLong">
+                        <span class="pull-left">Registrar</span>
+                        <span class="pull-right">
+                           <em class="fa fa-chevron-circle-right"></em>
+                        </span>
+                     </a>
+                     <!-- END panel-->
+                  </div>
+</div>
+
+
+<div class="col-md-4 offset-2">
+   <div class="panel panel-info">
+                     <div class="panel-heading">
+                        <div class="row">
+                           <div class="col-xs-3">
+                              <em class="fa fa-list-alt fa-5x"></em>
+                           </div>
+                           <div class="col-xs-9 text-right">
+                              <div class="text-lg"></div>
+                              <p class="m0">Ver equipos</p>
+                           </div>
+                        </div>
+                     </div>
+                     <a href="" class="panel-footer bg-dark bt0 clearfix btn-block" data-toggle="modal" data-target="#ModalVer">
+                        <span class="pull-left">Ver</span>
+                        <span class="pull-right">
+                           <em class="fa fa-chevron-circle-right"></em>
+                        </span>
+                     </a>
+                  </div>
+</div>
+
+<div class="col-md-4 offset-2">
+    <div class="panel panel-warning">
+                     <div class="panel-heading">
+                        <div class="row">
+                           <div class="col-xs-3">
+                              <em class="fa fa-exchange fa-5x"></em>
+                           </div>
+                           <div class="col-xs-9 text-right">
+                              <div class="text-lg"></div>
+                              <p class="m0">Cambiar estado de un equipo</p>
+                           </div>
+                        </div>
+                     </div>
+                     <a href="" class="panel-footer bg-dark bt0 clearfix btn-block" data-toggle="modal" data-target="#ModalStatus">
+                        <span class="pull-left">Ingresar</span>
+                        <span class="pull-right">
+                           <em class="fa fa-chevron-circle-right"></em>
+                        </span>
+                     </a>
+                  </div>
+
+
+</div>
+</div>
+</div>
+<h4 style="margin-left: 15px;"><span class="fa fa-level-down text-primary"></span>   Ultimos registros:</h4><div class="container-fluid">
+<!-- START table-responsive-->
+                     <div class="table-responsive">
+                        <table class="table table-striped  table-hover table-condensed">
+                           <thead>
+                              <tr>
+                                 <th>Codigo</th>
+                                 <th>Nombre</th>
+                                 <th>Modelo</th>
+                                 <th>Descripcion</th>
+                                 <th>Fecha de compra</th>
+                                 <th>Proveedor</th>
+                                 <th>Status</th>
+                                 <th>Ubicacion</th>
+
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-repeat="equip in equipo.slice().reverse() | limitTo:5">
+                                 <td>
+                                    <strong>{{equip.codigo}}</strong>
+                                 </td>
+                                 <td>
+                                   {{equip.nombre}}
+                                 </td>
+                                 <td>
+                                   {{equip.modelo}}
+                                 </td>
+                                 <td>
+                                   {{equip.descripcion}}
+                                 </td>
+                                 <td>
+                                  {{equip.fecha_compra}}
+                                 </td>
+                                 <td>
+                                   {{equip.proveedor}}
+                                 </td>
+                                 <td class="text-center">
+                                   <p class={{equip.Label['0'].claseLabel}}>{{equip.Label['0'].Label}}</p>
+                                 </td>
+                                 <td class="text-center">
+                                   <p class="label label-primary"> {{equip.ubicacion}}</p>
+                                 </td>
+                                
+                              </tr>
+
+
+                           </tbody>
+                        </table>
+                     </div>
+                     <!-- END table-responsive-->
+                     </div>
+</div>
+</section>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><span class="fa fa-pencil-square text-success"></span> Registro de nuevo equipo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label class="control-label"><span class="fa fa-barcode"></span> Codigo</label>
+            <input type="text" name="email" required class="form-control" ng-model="Codigo">
+         </div>
+         <div class="form-group">
+            <label class="control-label">Nombre *</label>
+            <input id="id-password" type="text" name="password" required class="form-control" ng-model="Nombre">
+         </div>
+         <div class="form-group">
+            <label class="control-label">Modelo *</label>
+            <input type="text" name="confirmPassword" required data-parsley-equalto="#id-password" class="form-control" ng-model="Modelo">
+         </div>
+          <div class="form-group">
+            <label class="control-label">Descripcion *</label>
+            <input type="text" name="confirmPassword" required data-parsley-equalto="#id-password" class="form-control" ng-model="Descripcion">
+         </div>
+          <div class="form-group">
+            <label class="control-label">Proveedor *</label>
+            <input type="text" name="confirmPassword" required data-parsley-equalto="#id-password" class="form-control" ng-model="Proveedor">
+         </div>
+         <div class="row">
+             <div class="col-md-12 form-group">
+             <label class="control-label">Ubicacion</label>
+             <input type="text" class="form-control" ng-model="Ubicacion">
+            </div>
+          </div>
+          <div class="row">
+             <div class="col-md-12 form-group">
+             <label class="control-label">Fecha Ingreso *</label>
+             <input type="date" min="2018-01-01" class="form-control" ng-model="FechaIngreso">
+            </div>
+          </div>
+           
+          <br>
+         <div class="required">* Campos obligatorios</div>
+      </div>
+    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-success" ng-click="RegistrarEquipo(Codigo, Nombre, Modelo, Descripcion, Ubicacion, Proveedor, FechaIngreso)">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Ver equipos -->
+<div class="modal fade" id="ModalVer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><span class="fa fa-list-alt text-info"></span> Equipos en el inventario</h5>
+        <div class=" form-group pull-right">
+          <input type="text" class="form-control" placeholder="Buscar" ng-model="ProductSearch">
+        </div>
+      </div>
+      <div class="modal-body">
+                    <!-- START table-responsive-->
+                     <div class="table-responsive">
+                        <table class="table table-striped  table-hover table-condensed">
+                           <thead>
+                              <tr>
+                                 <th>Codigo</th>
+                                 <th>Nombre</th>
+                                 <th>Modelo</th>
+                                 <th>Descripcion</th>
+                                 <th>Fecha de compra</th>
+                                 <th>Proveedor</th>
+                                 <th>Status</th>
+                                 <th>Ubicacion</th>
+
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-repeat="equip in equipo | filter: ProductSearch">
+                                 <td>
+                                    <strong>{{equip.codigo}}</strong>
+                                 </td>
+                                 <td>
+                                   {{equip.nombre}}
+                                 </td>
+                                 <td>
+                                   {{equip.modelo}}
+                                 </td>
+                                 <td>
+                                   {{equip.descripcion}}
+                                 </td>
+                                 <td>
+                                  {{equip.fecha_compra}}
+                                 </td>
+                                 <td>
+                                   {{equip.proveedor}}
+                                 </td>
+                                 <td class="text-center">
+                                   <p class={{equip.Label['0'].claseLabel}}>{{equip.Label['0'].Label}}</p>
+                                 </td>
+                                 <td class="text-center">
+                                   <p class="label label-primary"> {{equip.ubicacion}}</p>
+                                 </td>
+                                
+                              </tr>
+
+
+                           </tbody>
+                        </table>
+                       
+                     </div>
+                     <!-- END table-responsive-->
+      </div>
+    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal de cambiar status -->
+<div class="modal fade" id="ModalStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><span class="fa fa-exchange text-warning"></span>  Cambiar status del equipo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Codigo del equipo" ng-model="codigo">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="BuscarEquipo(codigo)"><span class="fa fa-search"></span></button>
+      </span>
+    </div>
+    <hr class="divider" ng-show="Err">
+    <p class="text-center alert alert-danger" ng-show="Err">{{ErrMsg}}</p>
+         <hr class="divider">
+         <div class="form-group">
+            <label class="control-label">Nombre del equipo</label>
+            <input id="id-password" type="text" name="password" required class="form-control" disabled="true" value={{NombreEquipo}}>
+        </div>
+         <div class="form-group">
+            <label class="control-label">Modelo del equipo</label>
+            <input id="id-password" type="text" name="password" required class="form-control" disabled="true" value={{ModeloEquipo}}>
+        </div>
+      
+                      <div class="form-group">
+                        <label class="text-center">STATUS:</label>
+                           <div class="col-sm-10">
+                              <label class="radio-inline c-radio text-success">
+                                 <input id="inlineradio10" type="radio" name="i-radio" value="disponible" checked ng-model="newStatus">
+                                 <span class="fa fa-check-circle-o text-success"></span>Disponible</label><br>
+                              <label class="radio-inline c-radio text-warning">
+                                 <input id="inlineradio20" type="radio" name="i-radio" value="mantenimiento" ng-model="newStatus" >
+                                 <span class="fa fa-heartbeat text-warning"></span>Mantenimiento</label><br>
+                              <label class="radio-inline c-radio text-danger">
+                                 <input id="inlineradio30" type="radio" name="i-radio" value="fuera de servicio" ng-model="newStatus" >
+                                 <span class="fa fa-remove text-danger"></span>Fuera de servicio</label><br>
+                           </div>
+                        </div>
+                  <hr class="divider"><br>     
+      </div>
+
+      <div class="modal-footer">
+      <div class="row">
+        <div class="col-md-6">
+          <button type="submit" data-dismiss="modal" class="btn btn-default btn-block">Cerrar</button>
+        </div>
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-success btn-block" ng-click="CambiarStatus(codigo, newStatus)">Cambiar</button>
+        </div>
+      </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie ie6 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie ie7 lt-ie9 lt-ie8"        lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie ie8 lt-ie9"               lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="ie ie9"                      lang="en"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-ie">
+<!--<![endif]-->
+
+
+<!-- Mirrored from themicon.co/theme/beadmin/v1.1/template.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Dec 2017 23:41:16 GMT -->
+<head>
+   <!-- Meta-->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+   <meta name="description" content="">
+   <meta name="keywords" content="">
+   <meta name="author" content="">
+   <title>MedicalCare</title>
+   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries-->
+   <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+   <!-- Bootstrap CSS-->
+   <link rel="stylesheet" href="app/css/bootstrap.css">
+   <!-- Vendor CSS-->
+   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" href="vendor/animo.js/animate-animo.css">
+   <link rel="stylesheet" href="vendor/whirl/dist/whirl.css">
+   <!-- START Page Custom CSS-->
+   <!-- END Page Custom CSS-->
+   <!-- App CSS-->
+   <link rel="stylesheet" href="app/css/app.css">
+   <!-- Modernizr JS Script-->
+   <script src="vendor/modernizr/modernizr.custom.js" type="application/javascript"></script>
+   <!-- FastClick for mobiles-->
+   <script src="vendor/fastclick/lib/fastclick.js" type="application/javascript"></script>
+</head>
+
+<body>
+   <!-- START Main wrapper-->
+   <div class="wrapper">
+     <!-- START Top Navbar-->
+      <nav role="navigation" class="navbar navbar-default navbar-top navbar-fixed-top">
+         <!-- START navbar header-->
+        <div class="navbar-header">
+            <a href="dashboard.v1.html" class="navbar-brand">
+               <div class="brand-logo">
+                 <img src="app/img/logo-single.png" alt="App Logo" class="img-responsive"> 
+               </div>
+               <div class="brand-logo-collapsed">
+                  <img src="app/img/logo-single.png" alt="App Logo" class="img-responsive">
+               </div>
+            </a>
+         </div>
+         <!-- END navbar header-->
+         <!-- START Nav wrapper-->
+         <div class="nav-wrapper">
+            <!-- START Left navbar-->
+            <ul class="nav navbar-nav">
+               <li>
+                  <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                  <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs">
+                     <em class="fa fa-navicon"></em>
+                  </a>
+                  <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
+                  <a href="#" data-toggle-state="aside-toggled" class="visible-xs">
+                     <em class="fa fa-navicon"></em>
+                  </a>
+               </li>
+            </ul>
+                  <!-- END Dropdown menu-->
+               </li>
+               <!-- END Messages menu (dropdown-list)-->
+             </ul>
+            <!-- END Left navbar-->
+            <!-- START Right Navbar-->
+            <ul class="nav navbar-nav navbar-right">
+           
+               <li>
+                  <a href="#" data-toggle-state="offsidebar-open">
+                     <em class="fa fa-search f-x2"></em>    
+                  </a>
+               </li>
+              
+               <!-- END Contacts menu-->
+            </ul>
+            <!-- END Right Navbar-->
+         </div>
+         <!-- END Nav wrapper-->
+       
+      </nav>
+      <!-- END Top Navbar-->
+      <!-- START aside-->
+      <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <nav class="sidebar">
+            <!-- START user info-->
+            <div class="item user-block" style="display:block;">
+               <!-- User picture-->
+               <div class="user-block-picture">
+                  <div class="user-block-status">
+                     <img src="app/img/user/userLogo.png" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle">
+                     <div class="circle circle-success circle-lg"></div>
+                  </div>
+                  <!-- Status when collapsed-->
+               </div>
+               <!-- Name and Role-->
+               <div class="user-block-info">
+                  <span class="user-block-name item-text">{{usuario.nombre}} {{usuario.apellido}}</span>
+                  <span class="user-block-role">{{usuario.cargo}}</span>
+               </div>
+            </div>
+            <!-- END user info-->
+            <ul class="nav">
+               <!-- START Menu-->
+               <li class="nav-heading">Menu</li>
+               <li>
+                  <a href="#!home" title="Dashboard">
+                     <em class="fa fa-dot-circle-o"></em>
+                     <span class="item-text">Inicio </span>
+                  </a>  
+                
+               </li>
+              
+               <li>
+                  <a href="#!equipos">
+                     <em class="fa fa-dropbox"></em>
+                     <span class="item-text">Equipos</span>
+                  </a>
+                </li>
+               
+               <li class="nav-heading" ng-show="isDirector">Director</li>
+               <li ng-show="isDirector">
+                  <a href="#!usuarios" title="Dashboard">
+                     <em class="fa fa-user"></em>
+                     <span class="item-text">Usuarios</span>
+                  </a>
+               </li>
+
+               <li class="nav-heading">Reportes</li>
+               <li>
+                  <a href="#!reportes" title="Dashboard">
+                     <em class="fa fa-list-ul"></em>
+                     <span class="item-text">Equipos</span>
+                  </a>
+                
+               </li>
+
+               <li class="nav-heading">Mi usuario</li>
+                <li>
+                  <a href="#" title="Dashboard">
+                     <em class="fa fa-user"></em>
+                     <span class="item-text">Perfil</span>
+                  </a>
+                   <a href="" title="Dashboard " ng-click="logout()" class="text-danger">
+                     <em class="fa fa-remove"></em>
+                     <span class="item-text text-danger">Cerrar sesion</span>
+                  </a>
+                
+               </li>
+
+            </ul>
+         </nav>
+         <!-- END Sidebar (left)-->
+      </aside>
+      <!-- End aside-->
+
+      <!-- START aside-->
+      <aside class="offsidebar">
+         <!-- START Off Sidebar (right)-->
+         <nav>
+            <div class="p-lg text-center">
+               <em class="fa fa-dropbox"></em>
+               <strong>Equipos</strong>
+            </div>
+            <ul class="nav">
+               <!-- END user info-->
+               <li class="p">
+                  <div class="form-group has-feedback">
+                     <input type="text" placeholder="Nombre del equipo" class="form-control input-sm" ng-model="ProductSearch">
+                     <em class="fa fa-search form-control-feedback text-muted"></em>
+                  </div>
+               </li>
+               <!-- START list title-->
+               <li class="p">
+                  <small class="text-muted">INVENTARIO</small>
+               </li>
+               <!-- END list title-->
+               <li ng-repeat="equipo in equipos | filter: ProductSearch">
+                  <!-- START User status-->
+                  <a href="#" class="media p mt0">
+                     <span class="pull-right">
+                        <span class={{equipo.Label['0']}}></span>
+                     </span>
+                     <span class="pull-left">
+                        <!-- Contact avatar-->
+                        <img src="app/img/user/userLogo.png" alt="Image" class="media-object img-circle thumb32">
+                     </span>
+                     <!-- Contact info-->
+                     <span class="media-body">
+                        <span class="media-heading">
+                           <strong>{{equipo.nombre}}</strong>
+                           <br>
+                           <small class="text-muted">{{equipo.status}}</small>
+                        </span>
+                     </span>
+                  </a>
+
+               </li>
+           
+            </ul>
+            <!-- Extra items-->
+            
+          
+         </nav>
+         <!-- END Off Sidebar (right)-->
+      </aside>
+      <!-- END aside-->
+      <!-- START Main section-->
+      <section>
+         <!-- START Page content-->
+         <div class="content-wrapper">
+             <div class="row">
+             <div class="col-md-4">
+             <div class="panel widget">
+                     <div class="row row-table row-flush">
+                        <div class="col-xs-4 bg-success text-center">
+                           <em class="fa fa-check fa-2x"></em>
+                        </div>
+                        <div class="col-xs-8">
+                           <div class="panel-body text-center">
+                              <h4 class="mt0">{{Disponibles.length}}</h4>
+                              <p class="mb0 text-muted">Equipos operativos</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  </div>
+
+                  <div class="col-md-4">
+                <div class="panel widget">
+                     <div class="row row-table row-flush">
+                        <div class="col-xs-4 bg-warning text-center">
+                           <em class="fa fa-exclamation-triangle fa-2x"></em>
+                        </div>
+                        <div class="col-xs-8">
+                           <div class="panel-body text-center">
+                              <h4 class="mt0">{{Mantenimiento.length}}</h4>
+                              <p class="mb0 text-muted">Equipos en mantenimiento</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  </div>
+
+
+                <div class="col-md-4">
+                <div class="panel widget">
+                     <div class="row row-table row-flush">
+                        <div class="col-xs-4 bg-danger text-center">
+                           <em class="fa fa-remove fa-2x"></em>
+                        </div>
+                        <div class="col-xs-8">
+                           <div class="panel-body text-center">
+                              <h4 class="mt0">{{FueraServicio.length}}</h4>
+                              <p class="mb0 text-muted">Fuera de circulacion</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  </div>
+
+   </div>     
+<div class="row">
+   <div class="col-md-4 text-center"><h2 class=""> <span class="fa fa-arrow-down"></span> </h2></div>
+   <div class="col-md-4 text-center"><h2 class=""> <span class="fa fa-arrow-down"></span> </h2></div>
+   <div class="col-md-4 text-center"><h2 class=""> <span class="fa fa-arrow-down"></span> </h2></div>
+</div>
+
+
+<div class="row">
+   <div class="col-md-4">
+      <div class="panel panel-success">
+         <div class="panel-heading">
+            <h3 class="text-center"><span class="fa fa-check"></span></h3>
+         </div>
+         <div class="panel-body">
+         <h4 class="text-center"></h4>
+         <hr class="divider">
+            <ul class="list-group" ng-repeat="equipo in Disponibles">
+              <li class="list-group-item"><p class="label label-info">{{equipo.codigo}}</p> - {{equipo.nombre}}</li>
+            </ul> 
+         </div>
+         <div class="panel-footer">
+            <button class="btn btn-primary btn-sm center-block">Ver todos</button>
+         </div>
+      </div>
+   </div>
+
+
+
+  
+   <div class="col-md-4">
+      <div class="panel panel-warning">
+         <div class="panel-heading">
+            <h3 class="text-center"><span class="fa fa-exclamation-triangle"></span></h3>
+         </div>
+         <div class="panel-body">
+         <h4 class="text-center"></h4>
+         <hr class="divider">
+            <ul class="list-group" ng-repeat="equipo in Mantenimiento">
+              <li class="list-group-item"><p class="label label-info">{{equipo.codigo}}</p> - {{equipo.nombre}}</li>
+            </ul>  
+         </div>
+         <div class="panel-footer">
+            <button class="btn btn-primary btn-sm center-block">Ver todos</button>
+         </div>
+      </div>
+   </div>
+
+
+   
+   <div class="col-md-4">
+      <div class="panel panel-danger">
+         <div class="panel-heading">
+            <h3 class="text-center"><span class="fa fa-remove"></span></h3>
+         </div>
+         <div class="panel-body">
+         <h4 class="text-center"></h4>
+         <hr class="divider">
+           <ul class="list-group" ng-repeat="equipo in FueraServicio">
+              <li class="list-group-item"><p class="label label-info">{{equipo.codigo}}</p> - {{equipo.nombre}}</li>
+            </ul> 
+         </div>
+         <div class="panel-footer">
+            <button class="btn btn-primary btn-sm center-block">Ver todos</button>
+         </div>
+      </div>
+
+   </div>
+     
+
+</div>    
+<hr class="divider">
+
+         </div>
+         <!-- END Page content-->
+
+      </section>
+      <!-- END Main section-->
+    
+   </div>
+   <!-- END Main wrapper-->
+   <!-- START Scripts-->
+   <!-- Main vendor Scripts-->
+   <script src="vendor/jquery/dist/jquery.min.js"></script>
+   <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+   <!-- Plugins-->
+   <script src="vendor/chosen/chosen.jquery.js"></script>
+   <script src="vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+   <script src="vendor/bootstrap-filestyle/src/bootstrap-filestyle.min.js"></script>
+   <!-- Animo-->
+   <script src="vendor/animo.js/animo.min.js"></script>
+   <!-- Sparklines-->
+   <script src="vendor/sparkline/index.js"></script>
+   <!-- Slimscroll-->
+   <script src="vendor/slimScroll/jquery.slimscroll.min.js"></script>
+   <!-- Store + JSON-->
+   <script src="vendor/store-js/store%2bjson2.min.js"></script>
+   <!-- ScreenFull-->
+   <script src="vendor/screenfull/dist/screenfull.min.js"></script>
+   <!-- START Page Custom Script-->
+   <!-- END Page Custom Script-->
+   <!-- App Main-->
+   <script src="app/js/app.js"></script>
+   <!-- END Scripts-->
+</body>
+
+
+<!-- Mirrored from themicon.co/theme/beadmin/v1.1/template.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Dec 2017 23:41:16 GMT -->
+</html>
