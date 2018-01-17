@@ -156,6 +156,24 @@ $http.post('http://localhost:3000/equipos', data)
 });
 }
 
+//ELIMINAR UN EQUIPO
+$scope.eliminarEquipo = function(codigo){
+$http.delete('http://localhost:3000/equipo/' + codigo)
+.then(function(response) {
+    $http.get('http://localhost:3000/equipo/' + codigo)
+    .then(function(data) {
+        
+    if (data.data == null) {
+        toastr.warning('¡Equipo no encontrado!');
+    }else{
+        toastr.success('Equipo eliminado con exito!');
+    }
+    
+});
+});
+}
+
+
 
 //CAMBIAR ESTATUS DE UN EQUIPO
 $scope.BuscarEquipo = function(codigo){
@@ -252,60 +270,166 @@ app.controller('reportesCtrl', ['$scope','$cookies', '$http', 'auth', function($
     //logout de la factoria auth
     $scope.logout = function(){auth.logout();}
 
+//GENERAR PDF DE REPORTE...
+var Disponibles   = [];
+var Mantenimiento = [];
+var F_Servicio    = [];
+$http.get("http://localhost:3000/equipos")
+.then(function(response) {
+    //console.log(response.data);
+    for (var i = 0; i < response.data.length; i++) {
+         if (response.data[i].status == 'disponible') {Disponibles.push(response.data[i]);};
+         if (response.data[i].status == 'mantenimiento') {Mantenimiento.push(response.data[i]);};
+         if (response.data[i].status == 'fuera de servicio') {F_Servicio.push(response.data[i]);};
+     }; 
+//SEPARANDO TITULOS ACORDE A LA PETICION QUE SE HAGA, (BOTON QUE SE APRIETA DIFERENCIADOR DEL TIPO DE REPORTE QUE SE REQUIERA)
 
-    var docDefinition = {
-      content: [
-        {
-          text: 'PRODUCTOS DISPONIBLES'
-        },
-        {
-          style: 'demoTable',
-          table: {
-            widths: ['*', '*', '*','*', '*', '*'],
-            body: [
-            [  {text: 'CODIGO', style: 'header'}, 
-               {text: 'NOMBRE', style: 'header'},
-               {text: 'MODELO', style: 'header'},
-               {text: 'CODIGO', style: 'header'}, 
-               {text: 'NOMBRE', style: 'header'},
-               {text: 'MODELO', style: 'header'}
-            ],
-              ['Sachin', '344', '52'],
-              ['Sanga', '320', '89'],
-              ['Ponting', '300', '68'],
-              ['Sachin', '344', '52'],
-              ['Sanga', '320', '89'],
-              ['Ponting', '300', '68'] 
-            ]
-          }
-        }
-      ],
-      styles: {
-        header: {
-          bold: true,
-          color: '#000',
-          fontSize: 11
-        },
-        demoTable: {
-          color: '#666',
-          fontSize: 10
-        }
-      }
-    };
+//DISPONIBLES
+//-----------------------------------------------------------------------
+titulo = 'Equipos Disponibles';
 
-    $scope.openPdf = function() {
-      pdfMake.createPdf(docDefinition).open();
-    };
+var bodyData = [];
+bodyData.push(['Codigo','Nombre','Modelo','Proveedor','Ubicacion']);
 
-    $scope.downloadPdf = function() {
-      pdfMake.createPdf(docDefinition).download();
-    };
+Disponibles.forEach(function(sourceRow) {
+var dataRow = [];
+  dataRow.push(sourceRow.codigo);
+  dataRow.push(sourceRow.nombre);
+  dataRow.push(sourceRow.modelo);
+  dataRow.push(sourceRow.proveedor);
+  dataRow.push(sourceRow.ubicacion);
   
+bodyData.push(dataRow)
+});
+ var DisponiblesPdf = {
+     content: [
+     //''+titulo+'',
+      {
+      layout: 'lightHorizontalLines',
+      table: {
+        headerRows: 1,
+        widths: ['*', '*', '*','*','*'],
+        body: bodyData
+      }
+    }
 
+  ]
+  };
+
+
+//MANTENIMIENTO
+//-----------------------------------------------------------------------
+titulo = 'Equipos En mantenimiento';
+
+var bodyMant = [];
+bodyMant.push(['Codigo','Nombre','Modelo','Proveedor','Ubicacion']);
+
+Mantenimiento.forEach(function(Mant) {
+var MantCuerpo = [];
+  MantCuerpo.push(Mant.codigo);
+  MantCuerpo.push(Mant.nombre);
+  MantCuerpo.push(Mant.modelo);
+  MantCuerpo.push(Mant.proveedor);
+  MantCuerpo.push(Mant.ubicacion);
+  
+bodyMant.push(MantCuerpo)
+});
+ var MantenimientoPdf = {
+     content: [
+     //''+titulo+'',
+      {
+      layout: 'lightHorizontalLines',
+      table: {
+        headerRows: 1,
+        widths: ['*', '*', '*','*','*'],
+        body: bodyMant
+      }
+    }
+
+  ]
+  };
+
+
+  //FUERA DE SERVICIO
+//-----------------------------------------------------------------------
+titulo = 'Equipos fuera de servicio';
+
+var bodyFS = [];
+bodyFS.push(['Codigo','Nombre','Modelo','Proveedor','Ubicacion']);
+
+F_Servicio.forEach(function(FS) {
+var FSCuerpo = [];
+  FSCuerpo.push(FS.codigo);
+  FSCuerpo.push(FS.nombre);
+  FSCuerpo.push(FS.modelo);
+  FSCuerpo.push(FS.proveedor);
+  FSCuerpo.push(FS.ubicacion);
+  
+bodyFS.push(FSCuerpo)
+});
+ var FueraServicioPdf = {
+     content: [
+     //''+titulo+'',
+      {
+      layout: 'lightHorizontalLines',
+      table: {
+        headerRows: 1,
+        widths: ['*', '*', '*','*','*'],
+        body: bodyFS
+      }
+    }
+
+  ]
+  };
+
+
+  //USUARIOS
+//-----------------------------------------------------------------------
+$http.get('http://localhost:3000/usuarios')
+.then(function(response) {
+
+var bodyUser = [];
+bodyUser.push(['Cedula','Nombre','Apellido','Cargo', 'Telefono']);
+
+response.data.forEach(function(user) {
+var UserCuerpo = [];
+  UserCuerpo.push(user.cedula);
+  UserCuerpo.push(user.nombre);
+  UserCuerpo.push(user.apellido);
+  UserCuerpo.push(user.cargo);
+  UserCuerpo.push(user.telefono);
+  
+bodyUser.push(UserCuerpo)
+});
+ var UsuariosPdf = {
+     content: [
+     //''+titulo+'',
+      {
+      layout: 'lightHorizontalLines',
+      table: {
+        headerRows: 1,
+        widths: ['*', '*', '*','*',100],
+        body: bodyUser
+      }
+    }
+
+  ]
+  };
+
+$scope.openPdf = function(tipoConsulta) {
+if (tipoConsulta == 'disponibles') {pdfMake.createPdf(DisponiblesPdf).open();};
+if (tipoConsulta == 'mantenimiento') {pdfMake.createPdf(MantenimientoPdf).open();};
+if (tipoConsulta == 'fuera de servicio') {pdfMake.createPdf(FueraServicioPdf).open();};
+//USUARIOS
+if (tipoConsulta == 'usuarios') {pdfMake.createPdf(UsuariosPdf).open();};
+};
+});
+});
+//-----------------------------------------------------------------------
 }]);
 
 //CONTROLADOR DEL PERFIL
-app.controller('perfilCtrl', function($scope, $cookies, auth){
+app.controller('perfilCtrl', function($scope, $cookies,$http, auth){
     $scope.usuario = $cookies.getObject('usuario');
     console.log($scope.usuario);
     //Variable para mostrar elementos dependiendo del tipo de usuario
@@ -317,8 +441,41 @@ app.controller('perfilCtrl', function($scope, $cookies, auth){
     }
  
 //CONTROL
+$http.get('http://localhost:3000/usuario/' + $cookies.getObject('usuario').cedula)
+.then(function(response) {
+
+    $scope.cedula   = response.data.cedula;
+    $scope.password = response.data.password;
+    $scope.nombre   = response.data.nombre;
+    $scope.apellido = response.data.apellido;
+    $scope.cargo    = response.data.cargo;
+    $scope.correo   = response.data.correo;
+    $scope.telefono = response.data.telefono;
+    $scope.nivel    = response.data.nivel;
+
+//FUNCION PARA GUARDAR LOS DATOS
+$scope.saveData = function(cedula, password, nombre, apellido, cargo, correo, telefono){
+
+var data = {
+cedula:   $scope.cedula,
+password: $scope.password,
+nombre:   $scope.nombre,
+apellido: $scope.apellido,
+cargo:    $scope.cargo,
+correo:   $scope.correo,
+telefono: $scope.telefono,
+nivel:    $scope.nivel
+}
+
+$http.put('http://localhost:3000/usuario/' + $cookies.getObject('usuario').cedula, data)
+.then(function(response) {
+    toastr.success('¡Perfil actualizado con exito!');
+});
 
 
+}
+
+});
 
 });
 
@@ -344,8 +501,15 @@ $http.get('http://localhost:3000/usuarios')
 
 //REGISTRAR UN NUEVO USUARIO
 $scope.newUser = function(cedula, password, nombre, apellido, cargo, correo, telefono){
-    var nivel = 1;
+var nivel = 2;
 //console.log(cedula, password, nombre, apellido, cargo, correo, telefono, nivel);
+
+//VERIFICAR Q1UE EL USUARIO NO SE ENCUENTRE REGISTRADO CON ANTERIORIDAD
+var isRegister = false;
+$http.get('http://localhost:3000/usuario/' + cedula)
+.then(function(response) {
+console.log(response.data);
+if (response.data == null) {var isRegister = true};
 var data = {
 cedula:cedula,
 password:password,
@@ -356,12 +520,16 @@ correo:correo,
 telefono:telefono,
 nivel: nivel
 }
+if (isRegister) {
 $http.post('http://localhost:3000/usuarios', data)
 .then(function(response) {
     toastr.success('¡Usuario registrado con exito!');
 });
+}else{
+    toastr.warning('¡Usuario registrado con Anterioridad!');
 }
-
+});
+}
 
 //BUSCAR USUARIO PARA EDITAR
 $scope.findUser = function(cedula){
@@ -389,7 +557,7 @@ $http.get('http://localhost:3000/usuario/' + cedula)
     $scope.telefono = 'ADMINISTRADOR';
     $scope.nivel    = 'ADMINISTRADOR';
     $scope.Attr = 'none';
-    toastr.danger('NO PUEDE EDITAR A UN ADMINISTRADOR');
+    toastr.warning('¡No se puede editar un administrador!')
 }
 
 $scope.ModifiUser = function(cedula){
@@ -431,7 +599,7 @@ $http.get('http://localhost:3000/usuario/' + cedula)
     $scope.correo   = 'ADMINISTRADOR';
     $scope.telefono = 'ADMINISTRADOR';
     $scope.Attr = 'none';
-    toastr.danger('NO PUEDE ELIMINAR A UN ADMINISTRADOR');
+     toastr.warning('¡No se puede eliminar un administrador!')
 }
 
 $scope.deleteUser = function(cedula){
@@ -447,6 +615,32 @@ $http.delete('http://localhost:3000/usuario/' + cedula)
 });
 
 app.controller('recoverPassCtrl', ['$scope', '$cookies', '$http', 'auth', function($scope, $cookies, $http, auth){
+
+$scope.sendEmail = function(email){
+  if (email == undefined) {
+    toastr.warning("Formato del EMAIL invalido");
+  }else{
+
+  $http.get("http://localhost:3000/usuarioEmail/" + email)
+    .then(function(response) {
+      console.log(response);
+
+      if (response.data == null) {
+        toastr.warning("Correo no registrado en el sistema");
+      }else{
+toastr.warning("Espere por favor...");
+  $http.post('http://localhost:3000/recover/'+email+'/'+response.data.password+'')
+    .then(function(response) {
+        toastr.success(response.data);
+    });
+  }//else
+});
+  }
+
+}
+
+
+
 
 }]);
 

@@ -58,13 +58,7 @@
             <ul class="nav navbar-nav">
                <li>
                   <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-                  <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs">
-                     <em class="fa fa-navicon"></em>
-                  </a>
-                  <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
-                  <a href="#" data-toggle-state="aside-toggled" class="visible-xs">
-                     <em class="fa fa-navicon"></em>
-                  </a>
+                 
                </li>
             </ul>
                   <!-- END Dropdown menu-->
@@ -119,7 +113,7 @@
                
                <li class="nav-heading" ng-show="isDirector">Director</li>
                <li ng-show="isDirector">
-                  <a href="#!home" title="Dashboard">
+                  <a href="#!usuarios" title="Dashboard">
                      <em class="fa fa-user"></em>
                      <span class="item-text">Usuarios</span>
                   </a>
@@ -127,7 +121,7 @@
 
                <li class="nav-heading">Reportes</li>
                <li>
-                  <a href="#!home" title="Dashboard">
+                  <a href="#!reportes" title="Dashboard">
                      <em class="fa fa-list-alt"></em>
                      <span class="item-text">Reportes</span>
                   </a>
@@ -180,20 +174,20 @@
                      <div class="panel-body text-center bg-gray-dark">
                         <div class="row">
                            <div class="col-xs-4">
-                              <button class="btn btn-success btn-sm" ng-click="openPdf()">Disponibles</button>
+                              <button class="btn btn-success btn-sm" value="disponibles" ng-click="openPdf(tipoConsulta = 'disponibles')">Disponibles</button>
                            </div>
                            <div class="col-xs-4">
-                              <button class="btn btn-warning btn-sm">Mantenimiento</button>
+                              <button class="btn btn-warning btn-sm" ng-click="openPdf(tipoConsulta = 'mantenimiento')">Mantenimiento</button>
                            </div>
                            <div class="col-xs-4">
-                              <button class="btn btn-danger btn-sm">Dañados</button>
+                              <button class="btn btn-danger btn-sm" ng-click="openPdf(tipoConsulta = 'fuera de servicio')">Dañados</button>
                            </div>
                         </div>
                      </div>
                      <div class="panel-body text-center bg-gray-dark">
                         <div class="row">
                            <div class="col-xs-12">
-                              <button class="btn btn-primary btn-sm">USUARIOS</button>
+                              <button class="btn btn-primary btn-sm" ng-click="openPdf(tipoConsulta = 'usuarios')">Usuarios</button>
                            </div>
                          
                         </div>

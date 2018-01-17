@@ -58,13 +58,7 @@
             <ul class="nav navbar-nav">
                <li>
                   <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-                  <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs">
-                     <em class="fa fa-navicon"></em>
-                  </a>
-                  <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
-                  <a href="#" data-toggle-state="aside-toggled" class="visible-xs">
-                     <em class="fa fa-navicon"></em>
-                  </a>
+                 
                </li>
             </ul>
                   <!-- END Dropdown menu-->
@@ -119,7 +113,7 @@
                
                <li class="nav-heading" ng-show="isDirector">Director</li>
                <li ng-show="isDirector">
-                  <a href="#!home" title="Dashboard">
+                  <a href="#!usuarios" title="Dashboard">
                      <em class="fa fa-user"></em>
                      <span class="item-text">Usuarios</span>
                   </a>
@@ -127,7 +121,7 @@
 
                <li class="nav-heading">Reportes</li>
                <li>
-                  <a href="#!home" title="Dashboard">
+                  <a href="#!reportes" title="Dashboard">
                      <em class="fa fa-list-alt"></em>
                      <span class="item-text">Reportes</span>
                   </a>
@@ -173,13 +167,13 @@
                               <div class="col-md-6">
                               <div class="form-group">
                               <label>Cedula</label>
-                              <input type="text" placeholder="Cedula" class="form-control" value="26185824">
+                              <input type="text" placeholder="Cedula" class="form-control" ng-model="cedula">
                            </div>
                            </div>
                            <div class="col-md-6">
                                <div class="form-group">
                               <label>Password</label>
-                              <input type="password" placeholder="Password" class="form-control" value="123">
+                              <input type="password" placeholder="Password" class="form-control" ng-model="password">
                            </div>
                            </div>
                            </div>
@@ -188,13 +182,13 @@
                                <div class="col-sm-6"> 
                                <div class="form-group">
                               <label>Nombre</label>
-                              <input type="text" placeholder="Nombre" class="form-control" value="Hector">
+                              <input type="text" placeholder="Nombre" class="form-control" ng-model="nombre">
                            </div>
                            </div>
                            <div class="col-md-6 col-sm-6">
                               <div class="form-group">
                               <label>Apellido</label>
-                              <input type="text" placeholder="Apellido" class="form-control" value="Gonzalez">
+                              <input type="text" placeholder="Apellido" class="form-control" ng-model="apellido">
                            </div>
                            
                            </div>
@@ -202,30 +196,27 @@
                             <hr class="divider">
                               <div class="form-group">
                               <label>Cargo</label>
-                              <input type="text" placeholder="Cargo" class="form-control" value="Coordinador de desarrollo">
+                              <input type="text" placeholder="Cargo" class="form-control" ng-model="cargo">
                               </div>
                               <hr class="divider">
                               <div class="row">
                                  <div class="col-md-8">
                                  <div class="form-group">
                               <label>Correo</label>
-                              <input type="email" placeholder="Correo" class="form-control" value="hectorluisgonzalezlarreal@gmail.com">
+                              <input type="email" placeholder="Correo" class="form-control" ng-model="correo">
                               </div>
                               </div>
                               <div class="col-md-4">
                               <div class="form-group">
                               <label>Telefono</label>
-                              <input type="text" placeholder="Telefono" class="form-control" value="04121701402">
+                              <input type="text" placeholder="Telefono" class="form-control" ng-model="telefono">
                               </div>
                               </div>
                               </div>
                               <hr class="divider">
-                              <div class="form-group" style="width: 20%;">
-                              <label>Nivel</label>
-                              <input type="number" min="1" max="2" placeholder="Telefono" class="form-control" value="1">
-                              </div>
-                           <hr class="divider">
-                           <button type="submit" class="btn btn-sm btn-primary pull-right">Guardar</button>
+                             
+                          
+                           <button type="submit" class="btn btn-sm btn-primary pull-right" ng-click="saveData(cedula, password, nombre, apellido, cargo, correo, telefono)">Guardar</button>
                         </form>
                      </div>
                   </div>

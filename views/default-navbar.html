@@ -37,7 +37,7 @@
 </head>
 
 <body>
-   <!-- START Main wrapper-->
+  <!-- START Main wrapper-->
    <div class="wrapper">
      <!-- START Top Navbar-->
       <nav role="navigation" class="navbar navbar-default navbar-top navbar-fixed-top">
@@ -59,13 +59,7 @@
             <ul class="nav navbar-nav">
                <li>
                   <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-                  <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs">
-                     <em class="fa fa-navicon"></em>
-                  </a>
-                  <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
-                  <a href="#" data-toggle-state="aside-toggled" class="visible-xs">
-                     <em class="fa fa-navicon"></em>
-                  </a>
+               
                </li>
             </ul>
                   <!-- END Dropdown menu-->
@@ -73,7 +67,18 @@
                <!-- END Messages menu (dropdown-list)-->
              </ul>
             <!-- END Left navbar-->
-            
+            <!-- START Right Navbar-->
+            <ul class="nav navbar-nav navbar-right">
+           
+               <li>
+                  <a href="#" data-toggle-state="offsidebar-open">
+                     <em class="fa fa-search f-x2"></em>    
+                  </a>
+               </li>
+              
+               <!-- END Contacts menu-->
+            </ul>
+            <!-- END Right Navbar-->
          </div>
          <!-- END Nav wrapper-->
        
@@ -120,7 +125,7 @@
                
                <li class="nav-heading" ng-show="isDirector">Director</li>
                <li ng-show="isDirector">
-                  <a href="#!home" title="Dashboard">
+                  <a href="#!usuarios" title="Dashboard">
                      <em class="fa fa-user"></em>
                      <span class="item-text">Usuarios</span>
                   </a>
@@ -128,7 +133,7 @@
 
                <li class="nav-heading">Reportes</li>
                <li>
-                  <a href="#!home" title="Dashboard">
+                  <a href="#!reportes" title="Dashboard">
                      <em class="fa fa-list-ul"></em>
                      <span class="item-text">Equipos</span>
                   </a>
@@ -137,7 +142,7 @@
 
                <li class="nav-heading">Mi usuario</li>
                 <li>
-                  <a href="#" title="Dashboard">
+                  <a href="#!perfil" title="Dashboard">
                      <em class="fa fa-user"></em>
                      <span class="item-text">Perfil</span>
                   </a>
@@ -152,7 +157,59 @@
          </nav>
          <!-- END Sidebar (left)-->
       </aside>
-   <!-- End aside-->
+      <!-- End aside-->
+
+      <!-- START aside-->
+      <aside class="offsidebar">
+         <!-- START Off Sidebar (right)-->
+         <nav>
+            <div class="p-lg text-center">
+               <em class="fa fa-dropbox"></em>
+               <strong>Equipos</strong>
+            </div>
+            <ul class="nav">
+               <!-- END user info-->
+               <li class="p">
+                  <div class="form-group has-feedback">
+                     <input type="text" placeholder="Nombre del equipo" class="form-control input-sm" ng-model="ProductSearch">
+                     <em class="fa fa-search form-control-feedback text-muted"></em>
+                  </div>
+               </li>
+               <!-- START list title-->
+               <li class="p">
+                  <small class="text-muted">INVENTARIO</small>
+               </li>
+               <!-- END list title-->
+               <li ng-repeat="equipo in equipos | filter: ProductSearch">
+                  <!-- START User status-->
+                  <a href="#" class="media p mt0">
+                     <span class="pull-right">
+                        <span class={{equipo.Label['0']}}></span>
+                     </span>
+                     <span class="pull-left">
+                        <!-- Contact avatar-->
+                        <img src="app/img/user/userLogo.png" alt="Image" class="media-object img-circle thumb32">
+                     </span>
+                     <!-- Contact info-->
+                     <span class="media-body">
+                        <span class="media-heading">
+                           <strong>{{equipo.nombre}}</strong>
+                           <br>
+                           <small class="text-muted">{{equipo.status}}</small>
+                        </span>
+                     </span>
+                  </a>
+
+               </li>
+           
+            </ul>
+            <!-- Extra items-->
+            
+          
+         </nav>
+         <!-- END Off Sidebar (right)-->
+      </aside>
+      <!-- END aside-->
  
 
 
@@ -162,7 +219,7 @@
 <div class="row">
 
 
-<div class="col-md-4 offset-2">
+<div class="col-md-3 offset-2">
    <div class="panel panel-success">
                      <div class="panel-heading">
                         <div class="row">
@@ -186,7 +243,7 @@
 </div>
 
 
-<div class="col-md-4 offset-2">
+<div class="col-md-3 offset-2">
    <div class="panel panel-info">
                      <div class="panel-heading">
                         <div class="row">
@@ -208,7 +265,7 @@
                   </div>
 </div>
 
-<div class="col-md-4 offset-2">
+<div class="col-md-3 offset-2">
     <div class="panel panel-warning">
                      <div class="panel-heading">
                         <div class="row">
@@ -228,9 +285,28 @@
                         </span>
                      </a>
                   </div>
-
-
-</div>
+</div>  
+<div class="col-md-3 offset-2">
+    <div class="panel panel-danger">
+                     <div class="panel-heading">
+                        <div class="row">
+                           <div class="col-xs-3">
+                              <em class="fa fa-remove fa-5x"></em>
+                           </div>
+                           <div class="col-xs-9 text-right">
+                              <div class="text-lg"></div>
+                              <p class="m0">Eliminar un equipo</p>
+                           </div>
+                        </div>
+                     </div>
+                     <a href="" class="panel-footer bg-dark bt0 clearfix btn-block" data-toggle="modal" data-target="#ModalEliminar">
+                        <span class="pull-left">Eliminar</span>
+                        <span class="pull-right">
+                           <em class="fa fa-chevron-circle-right"></em>
+                        </span>
+                     </a>
+                  </div>
+</div>  
 </div>
 </div>
 <h4 style="margin-left: 15px;"><span class="fa fa-level-down text-primary"></span>   Ultimos registros:</h4><div class="container-fluid">
@@ -476,6 +552,41 @@
         <div class="col-md-6">
           <button type="submit" class="btn btn-success btn-block" ng-click="CambiarStatus(codigo, newStatus)">Cambiar</button>
         </div>
+      </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal de eliminar usuario -->
+<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><span class="fa fa-remove text-danger"></span> Eliminar equipo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Codigo del equipo" ng-model="codigo">
+      <span class="input-group-btn">
+        <button class="btn btn-danger" type="button" ng-click="eliminarEquipo(codigo)"><span class="fa fa-remove"></span></button>
+      </span>
+    </div>
+     
+         
+      
+      <div class="modal-footer">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" data-dismiss="modal" class="btn btn-default btn-block">Cerrar</button>
+        </div>
+       
       </div>
         
       </div>
